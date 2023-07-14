@@ -101,8 +101,6 @@ set scrolloff=15 "Left 10 last line, instead of move cursor to the end of file w
 set ignorecase "better for searching, worse for replacing
 set omnifunc=syntaxcomplete#Complete
 set number
-autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
-autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
 set wrap
 set linebreak "break long lines into multiple smaller lines
 set encoding=utf-8
