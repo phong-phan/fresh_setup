@@ -29,8 +29,8 @@ alias ports='ss -tnlp'
 alias his='history'
 alias ex='exit'
 alias ..='cd ../'
-custom=$(ifconfig | grep 'inet '| grep -v '127.0.0.1'  | awk '{print $2}')
-export PS1="\[\e[32m\][\[\e[m\]\[\e[31m\]\u\[\e[m\]\[\e[33m\]@"$custom"-\[\e[m\]\[\e[32m\]\h\[\e[m\]:\[\e[36m\]\w\[\e[m\]\[\e[32m\]]\[\e[m\]\[\e[32;47m\]#\[\e[m\] "
+custom=\$(ifconfig | grep 'inet '| grep -v '127.0.0.1'  | awk '{print \$2}'| head -n1)
+export PS1="\[\e[32m\][\[\e[m\]\[\e[31m\]\u\[\e[m\]\[\e[33m\]@"\$custom"-\[\e[m\]\[\e[32m\]\h\[\e[m\]:\[\e[36m\]\w\[\e[m\]\[\e[32m\]]\[\e[m\]\[\e[32;47m\]#\[\e[m\] "
 BASH
 cat << VIM > /root/.vimrc
 set nocompatible "Use this vimrc for system-wide instead of personal vimrc for each dir, project...
@@ -90,8 +90,8 @@ alias ports='ss -tnlp'
 alias his='history'
 alias ex='exit'
 alias ..='cd ../'
-custom=$(ifconfig | grep 'inet '| grep -v '127.0.0.1'  | awk '{print $2}')
-export PS1="\[\e[32m\][\[\e[m\]\[\e[31m\]\u\[\e[m\]\[\e[33m\]@"$custom"-\[\e[m\]\[\e[32m\]\h\[\e[m\]:\[\e[36m\]\w\[\e[m\]\[\e[32m\]]\[\e[m\]\[\e[32;47m\]#\[\e[m\] "
+custom=\$(ifconfig | grep 'inet '| grep -v '127.0.0.1'  | awk '{print \$2}'| head -n1)
+export PS1="\[\e[32m\][\[\e[m\]\[\e[31m\]\u\[\e[m\]\[\e[33m\]@"\$custom"-\[\e[m\]\[\e[32m\]\h\[\e[m\]:\[\e[36m\]\w\[\e[m\]\[\e[32m\]]\[\e[m\]\[\e[32;47m\]#\[\e[m\] "
 BASH
 cat << VIM > /home/u1/.vimrc
 set nocompatible "Use this vimrc for system-wide instead of personal vimrc for each dir, project...
