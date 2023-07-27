@@ -29,8 +29,8 @@ alias ports='ss -tnlp'
 alias his='history'
 alias ex='exit'
 alias ..='cd ../'
-IP=$(ifconfig | grep 'inet '| grep -v '127.0.0.1'  | awk '{print $2}')
-export PS1="\[\e[32m\][\[\e[m\]\[\e[31m\]\u\[\e[m\]\[\e[33m\]@"$IP"-\[\e[m\]\[\e[32m\]\h\[\e[m\]:\[\e[36m\]\w\[\e[m\]\[\e[32m\]]\[\e[m\]\[\e[32;47m\]#\[\e[m\] "
+custom=$(ifconfig | grep 'inet '| grep -v '127.0.0.1'  | awk '{print $2}')
+export PS1="\[\e[32m\][\[\e[m\]\[\e[31m\]\u\[\e[m\]\[\e[33m\]@"$custom"-\[\e[m\]\[\e[32m\]\h\[\e[m\]:\[\e[36m\]\w\[\e[m\]\[\e[32m\]]\[\e[m\]\[\e[32;47m\]#\[\e[m\] "
 BASH
 cat << VIM > /root/.vimrc
 set nocompatible "Use this vimrc for system-wide instead of personal vimrc for each dir, project...
@@ -40,8 +40,6 @@ set scrolloff=15 "Left 10 last line, instead of move cursor to the end of file w
 set ignorecase "better for searching, worse for replacing
 set omnifunc=syntaxcomplete#Complete
 set number
-autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
-autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
 set wrap
 set linebreak "break long lines into multiple smaller lines
 set encoding=utf-8
@@ -92,8 +90,8 @@ alias ports='ss -tnlp'
 alias his='history'
 alias ex='exit'
 alias ..='cd ../'
-IP=$(ifconfig | grep 'inet '| grep -v '127.0.0.1'  | awk '{print $2}')
-export PS1="\[\e[32m\][\[\e[m\]\[\e[31m\]\u\[\e[m\]\[\e[33m\]@"$IP"-\[\e[m\]\[\e[32m\]\h\[\e[m\]:\[\e[36m\]\w\[\e[m\]\[\e[32m\]]\[\e[m\]\[\e[32;47m\]#\[\e[m\] "
+custom=$(ifconfig | grep 'inet '| grep -v '127.0.0.1'  | awk '{print $2}')
+export PS1="\[\e[32m\][\[\e[m\]\[\e[31m\]\u\[\e[m\]\[\e[33m\]@"$custom"-\[\e[m\]\[\e[32m\]\h\[\e[m\]:\[\e[36m\]\w\[\e[m\]\[\e[32m\]]\[\e[m\]\[\e[32;47m\]#\[\e[m\] "
 BASH
 cat << VIM > /home/u1/.vimrc
 set nocompatible "Use this vimrc for system-wide instead of personal vimrc for each dir, project...
@@ -109,7 +107,6 @@ set encoding=utf-8
 set showcmd "show cmd at the last line of the screen
 set showmatch "highlight the matching
 set wildmenu "enhanced completion
-set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 set smarttab  "when in the beginning of a blank line insert a tab
 set hlsearch "highlight all previous search match
 set incsearch "move to the first match when searching
