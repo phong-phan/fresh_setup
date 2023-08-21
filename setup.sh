@@ -7,14 +7,18 @@ function cent_provision() {
 	echo "Update server"
 	yum clean all && yum -y update
 	echo "Install needed packages"
-	yum -y install bash-completion bash-completion-extras curl wget epel-release wget htop tree sysstat iotop telnet net-tools bind-utils
+	yum -y install bash-completion bash-completion-extras curl wget epel-release wget htop tree sysstat iotop telnet net-tools bind-utils vim
 	echo "Applying config for bash and vim"
-	cp -pv /root/.bashrc /root/.bashrc_$(date +%Y%m%d)
-	cp -pv /root/.vimrc /root/.vimrc_$(date +%Y%m%d)
+	if [ -f /root/.bashrc ]; then
+		cp -pv /root/.bashrc /root/.bashrc_$(date +%Y%m%d)
+	fi
+	if [ -f /root/.vimrc ]; then
+		cp -pv /root/.vimrc /root/.vimrc_$(date +%Y%m%d)
+	fi
 	cat  << BASH > /root/.bashrc
-	alias rm='rm -i'
-	alias cp='cp -i'
-	alias mv='mv -i'
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
@@ -131,7 +135,7 @@ if [ -f /etc/os-release ]; then
 			echo "Debian-based distro"
 			debian_provision
 		fi
-	elif [ "$(grep "CentOS Linux" /etc/os-release )" ]; then
+	elif [ "$(grep "CentOS Linux\|Rocky Linux" /etc/os-release )" ]; then
 		if [ $? -eq 0 ]; then
 			echo "REHL-based distro"
 			cent_provision
