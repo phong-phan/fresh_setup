@@ -74,9 +74,12 @@ function debian_provision() {
 	echo "Install needed packages"
 	sudo apt install -y bash-completion  curl wget  wget htop tree sysstat iotop telnet net-tools
 	echo "Applying config for bash and vim"
-	cp -pv /home/u1/.bashrc /home/u1/.bashrc_$(date +%Y%m%d)
-	cp -pv /home/u1/.vimrc /home/u1/.vimrc_$(date +%Y%m%d)
-	cat  << BASH > /home/u1/.bashrc
+	sudo cp -pv /home/$(whoami)/.bashrc /home/$(whoami)/.bashrc_$(date +%Y%m%d)
+	rm -rf  /home/$(whoami)/.bashrc
+	if [ -f /home/"$(whoami)"/.vimrc ]; then
+		sudo cp -pv /home/$(whoami)/.vimrc /home/$(whoami)/.vimrc_$(date +%Y%m%d)
+	fi
+	cat  << BASH > /home/"$(whoami)"/.bashrc
 	alias rm='rm -i'
 	alias cp='cp -i'
 	alias mv='mv -i'
@@ -97,7 +100,7 @@ alias ..='cd ../'
 custom=\$(ifconfig | grep 'inet '| grep -v '127.0.0.1'  | awk '{print \$2}'| head -n1)
 export PS1="\[\e[32m\][\[\e[m\]\[\e[31m\]\u\[\e[m\]\[\e[33m\]@"\$custom"-\[\e[m\]\[\e[32m\]\h\[\e[m\]:\[\e[36m\]\w\[\e[m\]\[\e[32m\]]\[\e[m\]\[\e[32;47m\]#\[\e[m\] "
 BASH
-cat << VIM > /home/u1/.vimrc
+cat << VIM > /home/$(whoami)/.vimrc
 set nocompatible "Use this vimrc for system-wide instead of personal vimrc for each dir, project...
 set shiftwidth=4 "Set shiftwidth
 set tabstop=4
@@ -123,7 +126,7 @@ set completeopt-=preview
 set background=dark
 set guicursor+=n-v-c:blinkon0
 VIM
-source /home/u1/.bashrc
+source /home/$(whoami)/.bashrc
 bash
 
 }
@@ -142,3 +145,4 @@ if [ -f /etc/os-release ]; then
 		fi
 	fi
 fi
+
