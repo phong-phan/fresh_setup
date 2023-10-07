@@ -4,11 +4,8 @@ echo "Provisioning the machine, please hanging there"
 
 
 function cent_provision() {
-	echo "Update server"
 	yum clean all && yum -y update
-	echo "Install needed packages"
-	yum -y install bash-completion bash-completion-extras curl wget epel-release wget htop tree sysstat iotop telnet net-tools bind-utils vim
-	echo "Applying config for bash and vim"
+	yum -y install bash-completion bash-completion-extras net-tools curl wget epel-release wget htop tree sysstat iotop telnet net-tools bind-utils vim
 	if [ -f /root/.bashrc ]; then
 		cp -pv /root/.bashrc /root/.bashrc_$(date +%Y%m%d)
 	fi
@@ -68,12 +65,9 @@ bash
 
 }
 function debian_provision() {
-	echo "Update server"
 	sudo apt clean
 	sudo apt update -y && sudo apt upgrade -y
-	echo "Install needed packages"
-	sudo apt install -y bash-completion  curl wget  wget htop tree sysstat iotop telnet net-tools
-	echo "Applying config for bash and vim"
+	sudo apt install -y bash-completion  curl wget  wget htop tree sysstat iotop telnet net-tools vim
 	sudo cp -pv /home/$(whoami)/.bashrc /home/$(whoami)/.bashrc_$(date +%Y%m%d)
 	rm -rf  /home/$(whoami)/.bashrc
 	if [ -f /home/"$(whoami)"/.vimrc ]; then
@@ -133,14 +127,12 @@ bash
 
 
 if [ -f /etc/os-release ]; then
-	if [ "$(grep 'Ubuntu' /etc/os-release )" ] ; then
+	if [ "$(grep 'Ubuntu\|Debian' /etc/os-release )" ] ; then
 		if [ $? -eq 0 ]; then
-			echo "Debian-based distro"
 			debian_provision
 		fi
-	elif [ "$(grep "CentOS Linux\|Rocky Linux" /etc/os-release )" ]; then
+	elif [ "$(grep -i "CentOS\|Rocky\|RHEL" /etc/os-release )" ]; then
 		if [ $? -eq 0 ]; then
-			echo "REHL-based distro"
 			cent_provision
 		fi
 	fi
