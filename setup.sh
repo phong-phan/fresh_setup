@@ -90,6 +90,7 @@ alias mkdir='mkdir -p'
 alias ports='ss -tnlp'
 alias his='history'
 alias ex='exit'
+alias ls='ls --color=auto'
 alias ..='cd ../'
 custom=\$(ifconfig | grep 'inet '| grep -v '127.0.0.1'  | awk '{print \$2}'| head -n1)
 export PS1="\[\e[32m\][\[\e[m\]\[\e[31m\]\u\[\e[m\]\[\e[33m\]@"\$custom"-\[\e[m\]\[\e[32m\]\h\[\e[m\]:\[\e[36m\]\w\[\e[m\]\[\e[32m\]]\[\e[m\]\[\e[32;47m\]#\[\e[m\] "
