@@ -59,6 +59,8 @@ set wildmode=longest:full,full "enhanced completion
 set title
 set completeopt-=preview
 set background=dark
+set statusline+=%F
+set laststatus=2
 set guicursor+=n-v-c:blinkon0
 VIM
 source /root/.bashrc
@@ -121,6 +123,8 @@ set wildmode=longest:full,full "enhanced completion
 set title
 set completeopt-=preview
 set background=dark
+set statusline+=%F
+set laststatus=2
 set guicursor+=n-v-c:blinkon0
 VIM
 source /home/$(whoami)/.bashrc
