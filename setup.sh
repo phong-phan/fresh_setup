@@ -22,7 +22,7 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 alias vi='vim'
-set -o emacs
+set -o vi
 alias cl='clear'
 alias l='ls -lash'
 alias o='tree .'
@@ -87,7 +87,7 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 alias vi='vim'
-set -o emacs
+set -o vi
 alias cl='clear'
 alias l='ls -lash'
 alias mkdir='mkdir -p'
