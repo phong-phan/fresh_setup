@@ -5,7 +5,8 @@ echo "Provisioning the machine, please hanging there"
 
 function cent_provision() {
 	yum clean all && yum -y update
-	yum -y install bash-completion net-tools curl wget epel-release wget htop tree sysstat iotop telnet net-tools bind-utils net-tools vim
+	yum -y install epel-release
+	yum -y install bash-completion net-tools curl wget wget htop tree sysstat iotop telnet net-tools bind-utils net-tools vim
 	if [ -f /root/.bashrc ]; then
 		cp -pv /root/.bashrc /root/.bashrc_$(date +%Y%m%d)
 	fi
