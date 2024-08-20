@@ -72,7 +72,7 @@ bash
 function debian_provision() {
 	sudo apt clean
 	sudo apt update -y && sudo apt upgrade -y
-	sudo apt install -y bash-completion  curl wget  wget htop tree sysstat iotop telnet net-tools vim
+	sudo apt install -y bash-completion  curl wget  wget htop tree sysstat iotop telnet net-tools vim dns-utils
 	sudo cp -pv /home/$(whoami)/.bashrc /home/$(whoami)/.bashrc_$(date +%Y%m%d)
 	rm -rf  /home/$(whoami)/.bashrc
 	if [ -f /home/"$(whoami)"/.vimrc ]; then
