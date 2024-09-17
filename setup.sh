@@ -142,7 +142,7 @@ if [ -f /etc/os-release ]; then
 		if [ $? -eq 0 ]; then
 			debian_provision
 		fi
-	elif [ "$(grep -i "CentOS\|Rocky\|RHEL" /etc/os-release )" ]; then
+	elif [ "$(grep -i "CentOS\|Rocky\|RHEL" /etc/os-release )" ] || [ "$(grep -i "CentOS\|Rocky\|RHEL" /etc/redhat-release )" ]; then
 		if [ $? -eq 0 ]; then
 			cent_provision
 		fi
