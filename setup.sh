@@ -2,7 +2,6 @@
 
 echo "Provisioning the machine, please hanging there"
 
-
 function cent_provision() {
 	yum clean all && yum -y update
 	yum -y install epel-release
@@ -135,8 +134,7 @@ source /home/$(whoami)/.bashrc
 bash
 
 }
-
-
+# Run setup function base on which distro type (RHEL based or Debian based)
 if [ -f /etc/os-release ]; then
 	if [ "$(grep 'Ubuntu\|Debian' /etc/os-release )" ] ; then
 		if [ $? -eq 0 ]; then
@@ -148,4 +146,3 @@ if [ -f /etc/os-release ]; then
 		fi
 	fi
 fi
-
