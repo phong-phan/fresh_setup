@@ -33,7 +33,7 @@ alias his='history'
 alias ex='exit'
 alias ..='cd ../'
 #Only for VMWare infra
-custom=\$(ip a |grep -A 3 '2:'| grep inet|awk '{print \$2}'|sed 's/\/.*//g')
+custom=\$(ip -o -4 addr show scope global | awk '{print \$4}' | sed 's/\/.*//g' | head -n 1)
 export PS1="\[\e[32m\][\[\e[m\]\[\e[31m\]\u\[\e[m\]\[\e[33m\]@"\$custom"-\[\e[m\]\[\e[32m\]\h\[\e[m\]:\[\e[36m\]\w\[\e[m\]\[\e[32m\]]\[\e[m\]\[\e[32;47m\]#\[\e[m\] "
 BASH
 cat << VIM > /root/.vimrc
@@ -99,7 +99,7 @@ alias ls='ls --color=auto'
 alias o='tree .'
 alias ..='cd ../'
 # Get the IP infor of the second interface:
-custom=\$(ip a |grep -A 3 '2:'| grep inet|awk '{print \$2}'|sed 's/\/.*//g')
+custom=\$(ip -o -4 addr show scope global | awk '{print \$4}' | sed 's/\/.*//g' | head -n 1)
 # Coloring the prompt:
 export PS1="\[\e[32m\][\[\e[m\]\[\e[31m\]\u\[\e[m\]\[\e[33m\]@"\$custom"-\[\e[m\]\[\e[32m\]\h\[\e[m\]:\[\e[36m\]\w\[\e[m\]\[\e[32m\]]\[\e[m\]\[\e[32;47m\]#\[\e[m\] "
 BASH
