@@ -11,12 +11,10 @@ set encoding=utf-8
 set showcmd
 set showmatch
 set wildmenu
-set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 set smarttab
 set hlsearch
 set incsearch
 set cc=
-set fillchars+=vert:\▏
 set clipboard=unnamedplus
 set wildmode=longest:full,full
 set title
