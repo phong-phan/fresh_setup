@@ -1,11 +1,11 @@
 #!/bin/bash
 
-echo "Provisioning the machine, please hang in there..."
+echo "Configuring the machine now please wait"
 # Common packages for both CentOS and Debian-based distros
-COMMON_PACKAGES="bash-completion curl wget htop tree sysstat iotop telnet net-tools vim"
+COMMON_PACKAGES="bash-completion curl wget tree telnet net-tools vim"
 
 # Function for CentOS/RHEL-based systems
-function cent_provision() {
+function rhel_provision() {
 	yum clean all && yum -y update
 	yum -y install epel-release
 	yum -y install $COMMON_PACKAGES bind-utils
@@ -54,7 +54,7 @@ fi
 alias vi='vim'
 set -o vi
 alias cl='clear'
-alias l='ls -lash'
+alias l='ls -lash --group-directories-first'
 alias mkdir='mkdir -p'
 alias ports='ss -tnlp'
 alias his='history'
@@ -99,7 +99,6 @@ set completeopt-=preview
 set background=dark
 set statusline+=%F
 set laststatus=2
-set guicursor+=n-v-c:blinkon0
 VIM
 }
 
@@ -108,6 +107,6 @@ if [ -f /etc/os-release ]; then
 	if grep -qi 'ubuntu\|debian' /etc/os-release ; then
 		debian_provision
 	elif grep -qi 'centos\|rocky\|rhel' /etc/os-release ; then
-		cent_provision
+		rhel_provision
 	fi
 fi
