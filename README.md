@@ -1,7 +1,23 @@
 # FRESH SETUP
-Say goodbye to the boring processes of updating, installing and configuring your newly setup Linux instances.
-Currently it is set to be working with Debian-based and RHEL-based.
+- Update, installing additional handy packages,custom profile for RHEL-based and Debian-based machines.
+- Auto detect non-root user
+- Backup current profile before running.
+- Structure:
 
-- Updating server.
-- Install additional packages.
-- Configuring Vim and Bash profiles.
+├──dotfile : profile settings
+
+├──packages: list packages for RHEL-based and Debian-based
+
+│  ├──deb_pkg_list
+
+│  └──rpm_pkg_list
+
+├──README.md
+
+└── setup.sh: run file
+- Usage:
+```
+bash setup.sh
+```
+
+
