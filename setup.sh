@@ -19,8 +19,8 @@ function update_packages() {
 
 	# Use $SUDO in commands
 	$SUDO $PKG_MGR update -y && $SUDO $PKG_MGR upgrade -y
-	$SUDO $PKG_MGR clean
-	$SUDO $PKG_MGR install -y "$COMMON_PACKAGES"
+	$SUDO $PKG_MGR clean all
+	$SUDO $PKG_MGR install -y $COMMON_PACKAGES
 }
 
 # Backup existing config files with a timestamp
