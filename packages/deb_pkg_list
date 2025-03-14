@@ -1,8 +1,1 @@
-bash-completion
-curl
-wget
-tree
-telnet
-net-tools
-vim
-dnsutils
+bash-completion curl wget tree telnet net-tools vim dnsutils
