@@ -1,6 +1,6 @@
 # FRESH SETUP
 
-## A project make new Linux machines looks and feel better
+## A project make new Linux machine looks and feels better
 
 ![Image](https://github.com/user-attachments/assets/e5e29b9f-159f-47f7-be48-262d51424302)
 
