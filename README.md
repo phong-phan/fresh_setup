@@ -1,6 +1,6 @@
 # FRESH SETUP
 
-## A project make new Linux machine looks and feels better
+## A project makes new Linux machine prettier
 
 ![Image](https://github.com/user-attachments/assets/e5e29b9f-159f-47f7-be48-262d51424302)
 
@@ -10,17 +10,15 @@
 - Backup current profile .bashrc and .vimrc  before running.
 - Structure:
 
+```bash
 ├──dotfile : profile settings
-
 ├──packages:
-
 │  ├──deb_pkg_list: List of packages for Debian-based
-
 │  └──rpm_pkg_list: List of packages for RHEL-based
-
 ├──README.md
-
 └── setup.sh: run file
+```
+
 - Usage:
 ```
 bash setup.sh
